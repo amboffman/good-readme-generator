@@ -19,7 +19,8 @@
   "dependencies": {
     "@octokit/rest": "^17.1.4",
     "axios": "^0.19.2",
-    "inquirer": "^7.1.0"
+    "inquirer": "^7.1.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "keywords": []
