@@ -1,4 +1,13 @@
 // TODO: import fs, path and inquirer modules
+// node modules
+const fs = require("fs");
+const util = require("util");
+
+// 3rd party modules
+const axios = require("axios")
+const { Octokit } = require("@octokit/rest");
+const inquirer = require("inquirer");
+
 
 // TODO: import api and generateMarkdown modules from ./utils/
 
