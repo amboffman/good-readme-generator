@@ -3,7 +3,7 @@ function generateMarkdown(data) {
   return `
 
 ## Questions? Contact Me!
-![Photo of Author](${ data.avatarURL})
+![Photo of Author](${ data.avatar_url})
 Email: ${ data.email}
 `;
 }

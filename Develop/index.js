@@ -7,7 +7,6 @@ const util = require("util");
 const inquirer = require("inquirer");
 
 // promise constructors
-const writeFileAsync = util.promisify(fs.writeFile);
 const appendFileAsync = util.promisify(fs.appendFile);
 
 // TODO: import api and generateMarkdown modules from ./utils/
@@ -27,19 +26,10 @@ const questions = [];
 // TODO: Write function to synchronously write data in the
 // current working directory to file named for the fileName parameter.
 // The data parameter is the text to write to the file.
-function writeToFile(fileName, data) {
-
-    try {
-        const content = await markdown();
-
-        await writeFileAsync("GOODREADME.md", content);
-        console.log("Awesome! We've got your README started as GOODREADME.md. Now, tell us about your project.");
-    }
-    catch (err) {
-        console.log(err);
-    }
-
-}
+// writeToFile(fileName, data) {
+// console.log("File created.");
+// }
+const writeToFile = util.promisify(fs.writeFile);
 
 // TODO: Use inquirer to prompt the user for each question in the
 // questions array. Then call api.getUser to fetch the user profile
@@ -58,8 +48,12 @@ function init() {
             return api.getUser(username);
         })
         .then(user => {
-            console.log(user)
-            return markdown(user);
+            const info = user.data
+            return markdown(info);
+        })
+        .then(results => {
+            return writeToFile("NEWREADME.md", results);
+
         })
         .catch(error => {
             console.log(error);
